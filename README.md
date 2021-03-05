@@ -6,3 +6,7 @@ It's contents should be:
 - {
   "Token": YOURTOKENHERE
   }
+
+# Commands:
+- m!random
+  - Chooses a random Monster Girl from MGE.
