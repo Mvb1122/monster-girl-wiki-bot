@@ -1,16 +1,10 @@
 # monster-girl-wiki-bot
-A simple bot that selects a random Monster Girl from the MGE.
-
-# If you wanna use it, make a file called "token.json"
-It's contents should be:
-- {
-  "Token": YOURTOKENHERE
-  }
+A simple bot that selects a random Monster Girl from the MGE Wiki.
 
 # Commands:
 - m!help
   - DM's you this list.
 - m!random
-  - Chooses a random Monster Girl from MGE.
+  - Chooses a random Monster Girl from MGE Wiki.
 - m!girl XX
-  - replace XX with the name of a gal and it'll send the cooresponding embed. (
+  - replace XX with the name of a gal and it'll send the cooresponding embed. 
