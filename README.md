@@ -8,3 +8,5 @@ A simple bot that selects a random Monster Girl from the MGE Wiki.
   - Chooses a random Monster Girl from MGE Wiki.
 - m!girl XX
   - replace XX with the name of a gal and it'll send the cooresponding embed. 
+- m!list
+  - Lists the added MGs.
