@@ -7,6 +7,7 @@ const girlList = girlListFile.list
 
 client.once('ready', () => {
     console.log('ready.')
+    client.user.setActivity(`${config.prefix}help`); 
 })
 
 client.on('message', message => {
@@ -15,6 +16,17 @@ client.on('message', message => {
     }
     if (message.content === `${config.prefix}random`) {
         message.channel.send(getGirl())
+    }
+    if (message.content === `${config.prefix}help`) {
+        message.channel.send("Check ur dms")
+        message.channel.type === (`"dm"`) + message.author.send({embed: {
+			color: 000000,
+			title: ("Commands:"),
+			fields: [
+			  { name: "Input", value: "m!random", inline: true},
+			  { name: "Result", value: "Sends a random Monster Girl from the Monster Girl Wiki.", inline: true}
+			]}			
+		})
     }
 })
 
@@ -43,6 +55,7 @@ const getGirl = () => {
         */
         .setTimestamp()
         .setFooter('Made by MVB', 'https://ihaveawebsite.tk/cdn/logo.png');
+    console.log("Somebody used the bot.")
     return girlEmbed
 }
 
