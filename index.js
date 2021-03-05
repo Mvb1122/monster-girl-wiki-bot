@@ -1,13 +1,25 @@
 const Discord = require('discord.js')
+const fs = require('fs')
 const client = new Discord.Client()
 const token = require('./token.json')
 const config = require('./config.json')
+
+// Generate GirlList on start
+let girlListTemp = []
+fs.readdirSync('./entries/').forEach(file => {
+    girlListTemp.push(`"${file.slice(0,-5)}"`);
+});
+console.log('girlListTemp generated.')
+let girlListTempJson = `{\n\t"list": [${girlListTemp}]\n}`
+fs.writeFileSync('./girllist.json', girlListTempJson)
+console.log(`List generation complete.`)
+
 const girlListFile = require('./girllist.json')
 const girlList = girlListFile.list
 
 client.once('ready', () => {
     console.log('ready.')
-    client.user.setActivity(`${config.prefix}help | Update: m!list`); 
+    client.user.setActivity(`${config.prefix}help`); 
     // client.user.setActivity(`Bot is in dev mode. Do not touch.`); 
 })
 
@@ -100,10 +112,7 @@ const getGirlFromName = (name) => {
             { name: 'rating', value: girlFile.rating, inline: true },
             { name: 'MGE URL', value: girlFile.url, inline: true },
         )
-        /*
-        .addField('Inline field title', 'Some value here', true)
-        .setImage('https://i.imgur.com/wSTFkRM.png')
-        */
+        
         .setTimestamp()
         .setFooter('Made by MVB', 'https://ihaveawebsite.tk/cdn/logo.png');
     console.log("Somebody used the bot.")
