@@ -10,3 +10,5 @@ It's contents should be:
 # Commands:
 - m!random
   - Chooses a random Monster Girl from MGE.
+- m!girl XX
+  - replace XX with the name of a gal and it'll send the cooresponding embed. (
