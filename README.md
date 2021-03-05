@@ -8,6 +8,8 @@ It's contents should be:
   }
 
 # Commands:
+- m!help
+  - DM's you this list.
 - m!random
   - Chooses a random Monster Girl from MGE.
 - m!girl XX
