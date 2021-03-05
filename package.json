@@ -1,0 +1,18 @@
+{
+  "name": "monster-girl-wiki-bot",
+  "version": "1.0.0",
+  "description": "A simple bot which generates a random Monster Girl",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "MGE"
+  ],
+  "author": "MB1122",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "nodemon": "^2.0.7"
+  }
+}
