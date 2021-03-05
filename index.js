@@ -11,9 +11,6 @@ client.once('ready', () => {
 })
 
 client.on('message', message => {
-    if (message.content === `${config.prefix}test`) {
-        message.channel.send('Yahoo, it worked.')
-    }
     if (message.content === `${config.prefix}random`) {
         message.channel.send(getGirl())
     }
@@ -53,10 +50,6 @@ const getGirl = () => {
             { name: 'rating', value: girlFile.rating, inline: true },
             { name: 'MGE URL', value: girlFile.url, inline: true },
         )
-        /*
-        .addField('Inline field title', 'Some value here', true)
-        .setImage('https://i.imgur.com/wSTFkRM.png')
-        */
         .setTimestamp()
         .setFooter('Made by MVB', 'https://ihaveawebsite.tk/cdn/logo.png');
     console.log("Somebody used the bot.")
