@@ -7,7 +7,8 @@ const girlList = girlListFile.list
 
 client.once('ready', () => {
     console.log('ready.')
-    client.user.setActivity(`${config.prefix}help`); 
+    client.user.setActivity(`${config.prefix}help | Update: m!list`); 
+    // client.user.setActivity(`Bot is in dev mode. Do not touch.`); 
 })
 
 client.on('message', message => {
@@ -15,21 +16,48 @@ client.on('message', message => {
         message.channel.send(getGirl())
     }
     if (message.content === `${config.prefix}help`) {
-        message.channel.send("Check ur dms")
+        message.channel.send("Check your DMs.")
         message.channel.type === (`"dm"`) + message.author.send({embed: {
 			color: 000000,
 			title: ("Commands:"),
 			fields: [
-			  { name: "Input", value: "m!random\nm!girl XX", inline: true},
-			  { name: "Result", value: "Sends a random Monster Girl from the Monster Girl Wiki.\nreplace XX with the name of a gal and it'll send the cooresponding embed.", inline: true}
+			  { name: "Input", value: "m!random\nm!girl XX\nm!list", inline: true},
+			  { name: "Result", value: "Sends a random Monster Girl from the Monster Girl Wiki.\nreplace XX with the name of a gal and it'll send the cooresponding embed.\nLists all of the currently added MGs.", inline: true}
 			]}			
 		})
     }
     if (message.content.startsWith(`${config.prefix}girl`)) {
-        let girl = getGirlFromName(message.content);
-        message.channel.send(girl)
+        const chosenGirl = message.content.slice(config.prefix.length + "girl".length + 1)
+        message.channel.send(matchGirl(chosenGirl))
+    }
+    if (message.content === `${config.prefix}list`) {
+        message.channel.send("Check your DMs.")
+        message.channel.type === (`"dm"`) + message.author.send({embed: {
+			color: 000000,
+			title: ("Current Girls added in:"),
+			fields: [
+			  { name: "` `", value: getListEmbed(), inline: true},
+			]}			
+		})
     }
 })
+
+const getListEmbed = () => {
+    const embedList = []
+    girlList.forEach(element => embedList.push(`${element.slice(0)}\n`))
+    return embedList
+}
+
+const matchGirl = (chosenGirl) => {
+    for (let i = 0; i < girlList.length; i++) {
+        console.log(girlList[i])
+        if (chosenGirl === girlList[i]) {
+            let girl = getGirlFromName(chosenGirl);
+            return girl
+        }
+    }
+    return "You either misspelled the MG's name or it is not added in yet."
+}
 
 const getGirl = () => {
     const numGirls = girlList.length
@@ -57,7 +85,6 @@ const getGirl = () => {
 }
 
 const getGirlFromName = (name) => {
-    name = name.slice(config.prefix.length + "girl".length + 1)
     const girlFile = require(`./entries/${name}.json`);
     const thumbnailURL = girlFile.thumbURL;
 
