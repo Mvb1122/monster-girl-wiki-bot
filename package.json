@@ -1,7 +1,7 @@
 {
   "name": "monster-girl-wiki-bot",
   "version": "1.0.0",
-  "description": "A simple bot which selects a random Monster Girl",
+  "description": "A simple bot that selects a random Monster Girl from the MGE Wiki.",
   "main": "index.js",
   "scripts": {
     "test": "node index.js"
