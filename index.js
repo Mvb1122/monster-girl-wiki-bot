@@ -62,7 +62,6 @@ const getListEmbed = () => {
 
 const matchGirl = (chosenGirl) => {
     for (let i = 0; i < girlList.length; i++) {
-        console.log(girlList[i])
         if (chosenGirl === girlList[i]) {
             let girl = getGirlFromName(chosenGirl);
             return girl
