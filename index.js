@@ -81,7 +81,7 @@ const getGirl = () => {
         .setColor('#0099ff')
         .setTitle(randomGirl)
         .setURL(girlFile.url)
-        .setAuthor("Nokris, Supplicant to Savathûn", 'https://ihaveawebsite.tk/cdn/logo.png', 'https://ihaveawebsite.tk')
+        .setAuthor("MVB", 'https://ihaveawebsite.tk/cdn/logo.png', 'https://ihaveawebsite.tk')
         .setThumbnail(thumbnailURL)
         .addFields(
             { name: 'Description', value: girlFile.reason },
@@ -103,7 +103,7 @@ const getGirlFromName = (name) => {
         .setColor('#0099ff')
         .setTitle(girlFile.id)
         .setURL(girlFile.url)
-        .setAuthor("Nokris, Supplicant to Savathûn", 'https://ihaveawebsite.tk/cdn/logo.png', 'https://ihaveawebsite.tk')
+        .setAuthor("MVB", 'https://ihaveawebsite.tk/cdn/logo.png', 'https://ihaveawebsite.tk')
         .setThumbnail(thumbnailURL)
         .addFields(
             { name: 'Description', value: girlFile.reason },
