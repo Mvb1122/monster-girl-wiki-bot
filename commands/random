@@ -1,0 +1,7 @@
+{
+  "suffix": "random",
+  "helpCommand": "This command fetches a random MG from the MGE wiki.",
+  "code": "if (message.content === `${config.prefix}random`) {
+             message.channel.send(getGirl())
+           }",
+}
