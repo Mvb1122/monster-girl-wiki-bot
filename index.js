@@ -42,6 +42,10 @@ for (i = 0; i < commandList.length; i ++) {
     helpList2Array.push(command.suffix);
 }
 
+// Generate list of girls for m!list.
+const embedList = [];
+girlList.forEach(element => embedList.push(`${element.slice(0)}\n`));
+console.log(embedList);
 
 // console.log(`\n\nBEGIN HELPLIST1:${helpList1}`);
 console.log(`\n\nBEGIN HELPLIST2:${helpList2}`);
