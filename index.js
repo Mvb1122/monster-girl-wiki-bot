@@ -45,11 +45,14 @@ for (i = 0; i < commandList.length; i ++) {
 // Generate list of girls for m!list.
 const embedList = [];
 girlList.forEach(element => embedList.push(`${element.slice(0)}\n`));
-console.log(embedList);
 
-// console.log(`\n\nBEGIN HELPLIST1:${helpList1}`);
-console.log(`\n\nBEGIN HELPLIST2:${helpList2}`);
-console.log(helpList2Array);
+// Generate html files for website.
+let webPageButtons = " ";
+for (i = 0; i < girlList.length; i++) {
+    webPageButtons += (`<button type=\"button\" onclick=\"display('${girlList[i]}')\">${girlList[i]}</button>`);
+}
+const webPage = "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width\"><title>MGE Reviews</title></head><body>Pick your poison:<br>" + webPageButtons + "<p id=\"demo\"></p><p id=\"rating\" style=\"font-size:50\"></p><script>let display = (fileName) => {fetch(`entries/${fileName}.json`).then(response => response.json()).then(data => display2(data));}\nlet display2 = (data) => {document.getElementById(\"demo\").innerHTML =  data.reason;document.getElementById(\"rating\").innerHTML =  data.rating;}</script></body></html>"
+fs.writeFileSync('./webPageFiles/webpage.html', webPage);
 
 client.once('ready', () => {
     console.log('ready.')

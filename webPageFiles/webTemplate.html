@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>testing fetch();</title>
+  </head>
+  <body>
+      if you can see this it's working but you gotta make sure that the jsonfiles are in the directory in order for the buttons to work
+      <a id="buttonList"></a>
+    <button type="button" onclick="display('Alp')">Show alpformation</button>
+    <button type="button" onclick="display('Automaton')">Show autoformation #2</button>
+    <p id="demo"></p>
+    <script>
+        let display = (fileName) => {
+          fetch(`entries/${fileName}.json`)
+            .then(response => response.json())
+            .then(data => display2(data));
+        }
+        let display2 = (data) => {
+          document.getElementById("demo").innerHTML =  data.reason;
+        }
+    </script>
+  </body>
+</html>
