@@ -5,3 +5,4 @@ node_modules/*
 webPageFiles/webpage.html
 *.mp4
 *.png
+mDB/*
