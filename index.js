@@ -92,7 +92,7 @@ client.on('message', message => {
         {
         let girlFile = require( `./entries/${name}.json` );
         let thumbnailURL = girlFile.thumbURL;
-        let girlEmbed = new Discord.MessageEmbed().setColor( '#0099ff' ).setTitle( girlFile.id ).setURL( girlFile.url ).setAuthor( 'MVB', 'https://ihaveawebsite.tk/cdn/logo.png', 'https://ihaveawebsite.tk' ).setThumbnail( thumbnailURL ).addFields(
+        let girlEmbed = new Discord.MessageEmbed().setColor( '#0099ff' ).setTitle( girlFile.id ).setURL( girlFile.url ).setAuthor( 'MVB', 'https://ihaveawebsite.tk/logo_small_inverted.png', 'https://ihaveawebsite.tk' ).setThumbnail( thumbnailURL ).addFields(
         {
             name: 'Description',
             value: girlFile.reason
