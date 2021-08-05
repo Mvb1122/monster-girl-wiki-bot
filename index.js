@@ -56,8 +56,8 @@ fs.writeFileSync('./webPageFiles/webpage.html', webPage);
 
 client.once('ready', () => {
     console.log('ready.')
-    // client.user.setActivity(`${config.prefix}help`); 
-    client.user.setActivity(`Bot is in dev mode. Do not touch.`);
+    client.user.setActivity(`${config.prefix}help`); 
+    // client.user.setActivity(`Bot is in dev mode. Do not touch.`);
 })
 
 client.on('message', message => {
