@@ -1,5 +1,5 @@
 {
   "suffix": "list",
   "helpCommand": "This command lists off all of the currently-added MGs.",
-  "code": "if (message.content === `${config.prefix}list`) {message.channel.send(`Check your DMs.`);message.channel.type === (`\"dm\"`);message.author.send({embed: {color: 000000,title: \"Current Girls added in:\",fields: [{name: ``, value: embedList, inline: true}]}});}"
+  "code": "if (message.content === `${config.prefix}list`) {message.channel.send(`Check your DMs.`);message.channel.type === (`\"dm\"`);message.author.send({embed: {color: 000000,fields: [{name: `Current Girls added in:`, value: embedList, inline: true}]}});}"
 }
