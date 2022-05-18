@@ -4,6 +4,21 @@ const client = new Discord.Client()
 const token = require('./token.json')
 const config = require('./config.json')
 
+const captializeProperly = (string) => {
+    string = string.trim();
+
+    // Capitalize the first letter.
+    string = string.charAt(0) + string.substring(1);
+
+    for (let i = 1; i < string.length; i++)
+        // Capitalize character if the previous character was a space.
+        if (string.charAt(i - 1) == ' ') string = string.substring(0, i) + ("" + string.charAt(i)).toUpperCase() + string.substring(i + 1);
+
+    console.log(string);
+
+    return string;
+}
+
 // Generate GirlList on start
 let girlListTemp = []
 fs.readdirSync('./entries/').forEach(file => {
@@ -90,42 +105,44 @@ client.on('message', message => {
     if (message.content.startsWith(config.prefix + "girl")){
         let getGirlFromName = ( name ) =>
         {
-        let girlFile = require( `./entries/${name}.json` );
-        let thumbnailURL = girlFile.thumbURL;
-        let girlEmbed = new Discord.MessageEmbed().setColor( '#0099ff' ).setTitle( girlFile.id ).setURL( girlFile.url ).setAuthor( 'MVB', 'https://ihaveawebsite.tk/logo_small_inverted.png', 'https://ihaveawebsite.tk' ).setThumbnail( thumbnailURL ).addFields(
-        {
-            name: 'Description',
-            value: girlFile.reason
-        },
-        {
-            name: '​',
-            value: '​'
-        },
-        {
-            name: 'rating',
-            value: girlFile.rating,
-            inline: true
-        },
-        {
-            name: 'MGE URL',
-            value: girlFile.url,
-            inline: true
-        } ).setTimestamp().setFooter( 'Made by MVB', 'https://ihaveawebsite.tk/cdn/logo.png' );
-        console.log( 'Somebody used the bot.' );
-        return girlEmbed
+            let girlFile = require( `./entries/${captializeProperly(name)}.json` );
+            let thumbnailURL = girlFile.thumbURL;
+            let girlEmbed = new Discord.MessageEmbed().setColor( '#0099ff' ).setTitle( girlFile.id ).setURL( girlFile.url ).setAuthor( 'MVB', 'https://ihaveawebsite.tk/logo_small_inverted.png', 'https://ihaveawebsite.tk' ).setThumbnail( thumbnailURL ).addFields(
+            {
+                name: 'Description',
+                value: girlFile.reason
+            },
+            {
+                name: '​',
+                value: '​'
+            },
+            {
+                name: 'rating',
+                value: girlFile.rating,
+                inline: true
+            },
+            {
+                name: 'MGE URL',
+                value: girlFile.url,
+                inline: true
+            } ).setTimestamp().setFooter( 'Made by MVB', 'https://ihaveawebsite.tk/cdn/logo.png' );
+            console.log( 'Somebody used the bot.' );
+            return girlEmbed
         }
+
         let matchGirl = ( chosenGirl ) =>
         {
-        for ( let i = 0; i < girlList.length; i++ )
-        {
-            if ( chosenGirl === girlList[ i ] )
+            for ( let i = 0; i < girlList.length; i++ )
             {
-            let girl = getGirlFromName( chosenGirl );
-            return girl;
+                if ( chosenGirl.toLowerCase() === girlList[ i ].toLowerCase() )
+                {
+                    let girl = getGirlFromName( chosenGirl );
+                    return girl;
+                }
             }
+            return 'You either misspelled the MGs name or it is not added in yet.';
         }
-        return 'You either misspelled the MGs name or it is not added in yet.';
-        }
+
         if ( message.content.startsWith( `${config.prefix}girl` ) )
         {
             let chosenGirlMSG = message.content.slice( config.prefix.length + 'girl'.length + 1 );
