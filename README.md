@@ -13,3 +13,8 @@ A simple bot that selects a random Monster Girl from the [MGE Wiki](https://mons
   - replace XX with the name of a gal and it'll send the cooresponding embed. 
 - m!list
   - Lists the added MGs.
+
+# Contributing:
+- If you want to add reviews, please do! I'm no longer writing them, but I'll add them into the bot if you ask me.
+- After you've written a review, either send it to me on Discord (Micah#1980) or committ it here and tell me that you did so.
+  - I'll look it over and push it through, if it's good enough.
