@@ -1,5 +1,5 @@
 # monster-girl-wiki-bot
-A simple bot that selects a random Monster Girl from the [MGE Wiki](https://monstergirlencyclopedia.fandom.com/wiki/Monster_Girls).
+A simple bot that selects a random Monster Girl from the [MGE Wiki](https://monstergirlencyclopedia.miraheze.org/wiki/Monster_Girls).
 
 # Invite:
 - If you want to use this bot, invite it to your server [here](https://discord.com/oauth2/authorize?client_id=817226079831588915&scope=bot).
