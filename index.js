@@ -117,7 +117,7 @@ client.on('message', message => {
                 value: '​'
             },
             {
-                name: 'rating',
+                name: 'Rating',
                 value: girlFile.rating,
                 inline: true
             },
