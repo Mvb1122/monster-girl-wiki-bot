@@ -1,6 +1,12 @@
 const Discord = require('discord.js')
 const fs = require('fs')
-const client = new Discord.Client()
+const client = new Discord.Client({
+    intents: [
+      Discord.GatewayIntentBits.Guilds,
+      Discord.GatewayIntentBits.GuildMessages,
+      Discord.GatewayIntentBits.MessageContent
+    ],
+  });
 const token = require('./token.json')
 const config = require('./config.json')
 
@@ -57,9 +63,12 @@ for (i = 0; i < commandList.length; i ++) {
     helpList2Array.push(command.suffix);
 }
 
+// console.log(`Helplist 1: ${helpList1}\nHelplist 2: ${helpList2}`);
+
 // Generate list of girls for m!list.
-const embedList = [];
-girlList.forEach(element => embedList.push(`${element.slice(0)}\n`));
+let embedList = [];
+girlList.forEach(element => embedList.push(`${element.slice(0)}`));
+embedList = embedList.join("\n");
 
 // Generate html files for website.
 let webPageButtons = " ";
@@ -75,7 +84,7 @@ client.once('ready', () => {
     // client.user.setActivity(`Bot is in dev mode. Do not touch.`);
 })
 
-client.on('message', message => {
+client.on('messageCreate', message => {
     // Load and run command if it's in the files.
     for (i = 0; i < helpList2Array.length; i++) {
         // console.log(helpList2Array[i]);
@@ -91,13 +100,13 @@ client.on('message', message => {
 
     if (message.content === `${config.prefix}help`) {
         message.channel.send("Check your DMs.")
-        message.channel.type === (`"dm"`) + message.author.send({embed: {
-			color: 000000,
-			title: ("Commands:"),
+        message.author.send({ embeds: [{
+			color: "000000",
+			title: "Commands:",
 			fields: [
 			  { name: "Input", value: `${helpList2}`, inline: true},
 			  { name: "Result", value: `${helpList1}`, inline: true}
-			]}			
+			]}]			
 		})
     }
 
@@ -107,7 +116,7 @@ client.on('message', message => {
         {
             let girlFile = require( `./entries/${captializeProperly(name)}.json` );
             let thumbnailURL = girlFile.thumbURL;
-            let girlEmbed = new Discord.MessageEmbed().setColor( '#0099ff' ).setTitle( girlFile.id ).setURL( girlFile.url ).setAuthor( 'MVB', 'https://ihaveawebsite.tk/logo_small_inverted.png', 'https://ihaveawebsite.tk' ).setThumbnail( thumbnailURL ).addFields(
+            let girlEmbed = new Discord.EmbedBuilder().setColor( '#0099ff' ).setTitle( girlFile.id ).setURL( girlFile.url ).setAuthor( 'MVB', 'https://micahb.dev/logo_small_inverted.png', 'https://micahb.dev' ).setThumbnail( thumbnailURL ).addFields(
             {
                 name: 'Description',
                 value: girlFile.reason
@@ -125,7 +134,7 @@ client.on('message', message => {
                 name: 'MGE URL',
                 value: girlFile.url,
                 inline: true
-            } ).setTimestamp().setFooter( 'Made by MVB', 'https://ihaveawebsite.tk/cdn/logo.png' );
+            } ).setTimestamp().setFooter( 'Made by MVB', 'https://micahb.dev/logo_small_inverted.png' );
             console.log( 'Somebody used the bot.' );
             return girlEmbed
         }

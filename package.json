@@ -12,7 +12,7 @@
   "author": "MB1122",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "discord.js": "^14.11.0",
     "nodemon": "^2.0.12",
     "package.json": "^2.0.1"
   }
